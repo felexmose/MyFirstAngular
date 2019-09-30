@@ -10,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class TodosComponent implements OnInit {
   todos: Todo[];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private TS: TodoService) { }
 
   ngOnInit() {
-    this.todos = this.todoService.getTodos();
+    this.TS.getTodos().subscribe(todos => {
+      this.todos = todos;
+    });
+   /* this.todos = [
+      {id: 1, title: 'star1', completed: true},
+      {id: 2, title: 'star2', completed: true},
+      {id: 3, title: 'star3', completed: false}
+    ]; */
   }
 
 }
